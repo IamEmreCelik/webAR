@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Jim WebAR</title>
+
+    <script type="module" 
+            src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+    </script>
+
+    <link rel="stylesheet" href="layout.css">
+    <!-- Latest compiled and minified CSS 
+    <link rel="stylesheet" 
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+            crossorigin="anonymous"> -->
+</head>
+
+<body>
+    <div id="container">
+        <header>
+            <nav>
+                <ul>
+                    <li>Jim Eveson WebAR Test</li>
+                </ul>
+            </nav>
+        </header>
+        
+            <!-- Use it like any other HTML element -->
+        <model-viewer
+            id="main"
+            style="border: 1px;"
+            src="gltf/ElectricScooter.glb"
+            ios-src="usdz/ElectricScooter.usdz"
+            ar ar-modes="webxr scene-viewer quick-look" 
+            ar-scale="auto" 
+            camera-controls 
+            alt="A 3D model of an ElectricScooter">
+        </model-viewer>
+        
+
+        <footer>
+            <p>Copyright 2021 Emre</p>
+        </footer>
+    </div>
+</body>
+
+</html>

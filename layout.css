@@ -1,0 +1,16 @@
+.wf{
+    outline: 1px solid black;
+}
+
+.ns{
+    background-color: bisque;
+}
+
+.ns2{
+    background-color: blanchedalmond;
+}
+
+.row{
+    min-height: 500px;
+}
+
