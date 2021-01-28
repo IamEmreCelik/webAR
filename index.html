@@ -24,8 +24,12 @@
             #error.hide {
               opacity: 0;
               visibility: hidden;
-              transition: visibility 2s, opacity 1s 1s;
+              transition: visibility 2s, opacity 1s 1s
             }
+                          
+            model-viewer#reveal {
+            --poster-color: transparent;
+              }
           </style>
     <script>
             document.querySelector("#model-viewer").addEventListener('ar-status', (event) => {
@@ -39,7 +43,7 @@
             });
     </script>
   </head>
-  <body>
+  <body style="background-color: #161616; color: rgb(252, 248, 242);">
 
     <div class="container">
         <h1 class="col" style="padding: 3% ;">Jim Eveson WebAR</h1>
@@ -52,7 +56,7 @@
                    DIMENSIONS	190 x 90 x 10 H cm <br>
                    MATERIAL	35 % Polyester / 65% cotton
                 </p>
-                <model-viewer
+                <model-viewer id="reveal"
                 style="width: 75%; height: 500px; align-self: auto;"
                 ar-scale="fixed"
                 ar camera-controls
@@ -83,7 +87,7 @@
                   DIMENSIONS	190 x 90 x 10 H cm<br>
                   MATERIAL	35 % Polyester / 65% cotton
                 </p>
-                <model-viewer 
+                <model-viewer id="reveal" 
                 style="width: 75%; height: 500px; align-self: auto;" 
                 ar-scale="fixed"
                 ar camera-controls
