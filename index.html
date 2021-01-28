@@ -1,49 +1,127 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Jim WebAR</title>
-
-    <script type="module" 
-            src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
-    </script>
-
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="layout.css">
-    <!-- Latest compiled and minified CSS 
-    <link rel="stylesheet" 
-            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
-            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
-            crossorigin="anonymous"> -->
-</head>
+    <title>Jim Eveson WebAR</title>
+    <style>
+            #error {
+              background-color: #ffffffdd;
+              border-radius: 16px;
+              padding: 16px;
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              transform: translate3d(-50%, -50%, 0);
+              transition: opacity 0.3s;
+            }
+            #error.hide {
+              opacity: 0;
+              visibility: hidden;
+              transition: visibility 2s, opacity 1s 1s;
+            }
+          </style>
+    <script>
+            document.querySelector("#model-viewer").addEventListener('ar-status', (event) => {
+              if(event.detail.status === 'failed'){
+                const error = document.querySelector("#error");
+                error.classList.remove('hide');
+                error.addEventListener('transitionend',(event) => {
+                  error.classList.add('hide');
+                });
+              }
+            });
+    </script>
+  </head>
+  <body>
 
-<body>
-    <div id="container">
-        <header>
-            <nav>
-                <ul>
-                    <li>Jim Eveson WebAR Test</li>
-                </ul>
-            </nav>
-        </header>
+    <div class="container">
+        <h1 class="col" style="padding: 3% ;">Jim Eveson WebAR</h1>
         
-            <!-- Use it like any other HTML element -->
-        <model-viewer
-            id="main"
-            style="border: 1px;"
-            src="gltf/ElectricScooter.glb"
-            ios-src="usdz/ElectricScooter.usdz"
-            ar ar-modes="webxr scene-viewer quick-look" 
-            ar-scale="auto" 
-            camera-controls 
-            alt="A 3D model of an ElectricScooter">
-        </model-viewer>
-        
-
-        <footer>
-            <p>Copyright 2021 Emre</p>
-        </footer>
+        <div class="row">
+            <div class="col">
+              <h4 style="padding-left: 3%;">Tonedcot 3D Model</h4>
+                <p style="padding-left: 3%;">
+                   Information about Tonedcot 3D Model. <br>
+                   DIMENSIONS	190 x 90 x 10 H cm <br>
+                   MATERIAL	35 % Polyester / 65% cotton
+                </p>
+                <model-viewer
+                style="width: 75%; height: 500px; align-self: auto;"
+                ar-scale="fixed"
+                ar camera-controls
+                disable-zoom
+                autoplay
+                poster="assets/poster/tonedcot.png"
+                ios-src="assets/man/man.usdz"
+                src="assets/tonedcot/tonedcot.gltf"
+                alt="A 3D model of a tonedcot">
+                <div id="error"
+                class="hide">
+                AR is not supported on this device
+                </div>
+                    <!--<button slot="ar-button" 
+                    class="primary-button"
+                    style="background-color: azure; 
+                    border-radius: 4px; 
+                    border: none; 
+                    position: absolute; 
+                    bottom: 64px;  
+                    font-size: 24px">
+                    👋 Activate AR
+                    </button>-->
+                </model-viewer>
+                <h4 style="padding-left: 3%;">Drawercot 3D Model</h4>
+                <p style="padding-left: 3%;">
+                  Information about Drawercot 3D Model. <br>
+                  DIMENSIONS	190 x 90 x 10 H cm<br>
+                  MATERIAL	35 % Polyester / 65% cotton
+                </p>
+                <model-viewer 
+                style="width: 75%; height: 500px; align-self: auto;" 
+                ar-scale="fixed"
+                ar camera-controls
+                disable-zoom
+                autoplay
+                poster="assets/poster/drawercot.png"
+                ios-src="assets/man/man.usdz"
+                src="assets/drawercot/drawercot.gltf"
+                alt="A 3D model of a drawercot">
+                <div id="error"
+                class="hide">
+                AR is not supported on this device
+                </div>
+                    <!--<button slot="ar-button" 
+                    class="primary-button"
+                    style="background-color: azure; 
+                    border-radius: 4px; 
+                    border: none; 
+                    position: absolute; 
+                    bottom: 64px;  
+                    font-size: 24px">
+                    👋 Activate AR
+                    </button>-->
+                </model-viewer>
+            </div>
+        </div>
     </div>
-</body>
+    <footer class="col" style="padding: 2%;">WebAR Test Application. 2021</footer>
 
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    -->
+  </body>
 </html>
